@@ -130,7 +130,7 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
 
       //check horizontal lines
       if (point1 != "" || point4 != "" || point7 != ""){
-        if (point1 !=""){
+        if (point1 !="" && wins == false){
           if (point1 == point2 && point2 == point3){
             wins = true;
             winner = point1;
@@ -141,7 +141,7 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
             snd.volume = soundVolume;
           }
         }
-        if (point4 !=""){
+        if (point4 !="" && wins == false){
           if (point4 == point5 && point5 == point6){
             wins = true;
             winner = point4;
@@ -152,7 +152,7 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
             snd.volume = soundVolume;
           }
         }
-        if (point7 !=""){
+        if (point7 !="" && wins != true){
           if (point7 == point8 && point8 == point9){
             wins = true;
             winner = point7;
@@ -167,7 +167,7 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
 
       //check vertical lines
       if (point1 != "" || point2 != "" || point3 != ""){
-        if(point1 != ""){
+        if((point1 != "") && (wins == false)){
           if (point1 == point4 && point4 == point7){
             wins = true;
             winner = point1;
@@ -178,7 +178,7 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
             snd.volume = soundVolume;
           }
         }
-        if(point2!=""){
+        if((point2!="") && (wins == false)){
           if (point2 == point5 && point5 == point8){
             wins = true;
             winner = point2;
@@ -189,7 +189,7 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
             snd.volume = soundVolume;
           }
         }
-        if(point3!=""){
+        if((point3!="") && (wins == false)){
           if (point3 == point6 && point6 == point9){
             wins = true;
             winner = point3;
@@ -203,8 +203,8 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
       }
 
       //check diagonal lines
-      if (point5 != ""){
-        if (point1 == point5 && point5 == point9){
+      if ((point5 != "") && (wins === false)){
+        if ((point1 == point5) && (point5 == point9) && (wins === false)){
             wins = true;
             winner = point1;
             document.getElementById("Column1").setAttribute("id", "Win1");
@@ -213,7 +213,7 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
             snd.play();
             snd.volume = soundVolume;
         }
-        if (point3 == point5 && point5 == point7){
+        if ((point3 == point5) && (point5 == point7)&& (wins === false)){
             wins = true;
             winner = point3;
             document.getElementById("Column3").setAttribute("id", "Win3");
@@ -226,7 +226,7 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
       //check for wins
         if (winner == "X"){ player = "Player X Won!";}
         if (winner == "O"){ player = "Player O Won!";}
-        if (boardisFull && wins == false){
+        if (boardisFull && wins != true){
           document.getElementById("displayWinner").innerHTML = "Its a Draw!";
           sndDraw.play();
           sndDraw.volume = soundVolume;
@@ -309,7 +309,6 @@ function ClickC9 (){ColumnClicked = "C9"; ticTacToe ();}
       function musicVolume(){
         playMusic = document.getElementById('music').textContent;
         playMusic = playMusic.trim();
-        console.log(playMusic);
         if (playMusic == "Turn off Sound"){
           document.getElementById('music').textContent = "Turn on Sound";
 
